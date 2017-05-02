@@ -70,6 +70,7 @@ var app = {
 
             listeningElement.setAttribute('style', 'display:none;');
             receivedElement.setAttribute('style', 'display:block;');
+            receivedElement.innerHTML = localStorage.getItem('registrationId');
         });
 
         push.on('error', function(e) {
