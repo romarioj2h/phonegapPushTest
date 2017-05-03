@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+</head>
+<body>
+	<div class="login_elements">
+		<h2>Area de Cliente</h2>
+		<div>
+			<input type="text" data-name="user" name="usernameLogin" placeholder="Email o ID de Cliente">
+			<input type="password" data-name="pass" name="passLogin" placeholder="Contraseña">
+			<input type="text" data-name="pass" name="account" value="old">
+			<input type="text" data-name="pass" name="accion" value="login">
+			<input type="text" data-name="pass" name="OAuthProvider">
+			<input type="text" data-name="pass" name="OAuthState">
+		</div>
+		<p id="respuesta">
+			
+		</p>
+		<button title="Ingresar" class="bt_ingresar">Acceder</button>
+		<div class="oAuth_box">
+			<span class="acceder">Acceder con:</span><a class="redes log_live" rel="live" href="#" title="Acceder ingresando a mi cuenta de Windows Live"><span></span></a><a class="redes log_gp" rel="google" href="#" title="Acceder ingresando a mi cuenta de Google"><span></span></a><a class="redes log_fb" rel="facebook" href="#" title="Acceder ingresando a mi cuenta de Facebook"><span></span></a><div class="clear"></div>
+		</div>
+		<a class="forget_lk" title="Reestablecer tu contraseña" href="#">¿Olvidaste tu <br> contraseña?</a><a class="new_lk" title="Crear una cuenta gratuita" href="#">¿Aún no tienes <br> una cuenta?</a><div class="clear"></div>
+	</div>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('.bt_ingresar').click(function () {
+				var data = {
+					usernameLogin: $('input[name="usernameLogin"]').val(),
+					passLogin: $('input[name="passLogin"]').val(),
+					account: $('input[name="account"]').val(),
+					accion: $('input[name="accion"]').val(),
+					OAuthProvider: $('input[name="OAuthProvider"]').val(),
+					OAuthState: $('input[name="OAuthState"]').val(),
+				};
+				var url = 'https://donweb.com/ajax-login.php';
+
+				$.ajax({
+					url: url,
+					type: 'GET',
+					data: data,
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					success: function(resp) {
+						$('#respuesta').html(JSON.stringify(resp));
+						console.log(resp);
+					}
+				});
+			});
+		});
+	</script>
+</body>
+</html>
