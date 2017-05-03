@@ -24,6 +24,7 @@ width=device-width, height=device-height, target-densitydpi=device-dpi" />
 			
 		</p>
 		<button title="Ingresar" class="bt_ingresar">Acceder</button>
+		<button title="Servicios" class="bt_servicios">Ver servicios</button>
 		<div class="oAuth_box">
 			<span class="acceder">Acceder con:</span><a class="redes log_live" rel="live" href="#" title="Acceder ingresando a mi cuenta de Windows Live"><span></span></a><a class="redes log_gp" rel="google" href="#" title="Acceder ingresando a mi cuenta de Google"><span></span></a><a class="redes log_fb" rel="facebook" href="#" title="Acceder ingresando a mi cuenta de Facebook"><span></span></a><div class="clear"></div>
 		</div>
@@ -50,6 +51,21 @@ width=device-width, height=device-height, target-densitydpi=device-dpi" />
 					url: url,
 					type: 'GET',
 					data: data,
+					dataType: 'jsonp',
+					jsonp: 'jsoncallback',
+					success: function(resp) {
+						$('#respuesta').html(JSON.stringify(resp));
+						console.log(resp);
+					}
+				});
+			});
+
+			$('.bt_servicios').click(function() {
+				var url = 'https://micuenta.donweb.com/ajax-json/clientes/perfil/resumenDeServicios';
+
+				$.ajax({
+					url: url,
+					type: 'GET',
 					dataType: 'jsonp',
 					jsonp: 'jsoncallback',
 					success: function(resp) {
