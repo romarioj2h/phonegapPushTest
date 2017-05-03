@@ -14,6 +14,9 @@
 			<input type="text" data-name="pass" name="OAuthProvider">
 			<input type="text" data-name="pass" name="OAuthState">
 		</div>
+		<p id="parametros">
+			
+		</p>
 		<p id="respuesta">
 			
 		</p>
@@ -36,6 +39,8 @@
 					OAuthProvider: $('input[name="OAuthProvider"]').val(),
 					OAuthState: $('input[name="OAuthState"]').val(),
 				};
+
+				$('#parametros').html(JSON.stringify(data));
 				var url = 'https://donweb.com/ajax-login.php';
 
 				$.ajax({
